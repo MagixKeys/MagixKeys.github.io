@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magix Keys Dongle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #001665;
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem;
+    }
+
+    .nav-header {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .nav-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }    
+    
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    nav select {
+      margin-left: 1rem;
+      color: #001665;
+      background-color: white;
+      border: 0px;
+    }
+    
+    .menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      padding-top: 0.8rem;
+    }
+
+    .menu div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        flex-direction: column;
+        justify-content: stretch;
+      }
+    
+      .nav-items {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        background-color: #001665;
+        width: 100%;
+        padding: 0.5rem 0;
+      }
+
+      .nav-items.show {
+        display: flex;
+      }
+
+      .menu {
+        display: flex;
+      }
+
+      nav a {
+        margin: 0;
+      }
+
+      nav select {
+        margin-left: 0;
+      }
+      
+      .nav-header {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    main {
+      padding: 6rem 2rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section {
+      padding: 40px 20px 40px;
+      margin: auto;
+    }
+
+    h1 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    
+    h2 {
+      font-size: 1.2rem;
+      padding-bottom: 0.2rem;
+      padding-top: 3rem;
+    }
+    
+    h3 {
+      font-size: 1.0rem;
+      padding-bottom: 0.2rem;
+      padding-top: 2rem;
+    }
+    
+    div.spacer {
+      padding-top: 2.5rem;
+    }
+    
+    section li {
+      padding: 0.5rem 0rem;
+    }
+    
+    .center {
+      text-align: center;
+    }
+    
+    div.box {
+      background: #dee1ff;
+      border: 1px solid #001665;
+      border-radius: 10px;
+      padding: 2em 20px;
+      margin: 2em auto;
+      max-width: 300px;
+    }
+    
+    .box h3 {
+      padding-top: 0px;
+    }
+    
+    a.button {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.8em 1.4em;
+      background: #001665;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    
+  </style>
+  <noscript>
+    <style>
+      .js-only { display: none !important; }
+    </style>
+  </noscript>    
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-header">    
+        <img class="logo" src="logo.png" alt="Magix Keys Logo" style="padding:0rem 3rem 0.8rem 0px;height:2.5rem;" />
+        <div class="menu js-only" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="nav-items js-only" id="navItems">
+        <a href="#connection">Connection Options</a>
+        <a href="#dongle">What is the Dongle?</a>
+        <a href="#get">Obtain Dongle</a>
+        <select onchange="switchLanguage(this)">
+          <option value="en" selected>English</option>
+          <option value="de" >Deutsch</option>
+        </select>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="connection">
+      <h1>Connection Options - Two Powerful Ways to Connect</h1>
+      <p>The Magix Keys App offers two ways to control your computer or device: via a direct Bluetooth connection and the Magix Keys Dongle.</p>
+      <p>The direct Bluetooth mode is very convenient, but may not work reliably on all systems or platforms. That’s where the Magix Keys Dongle comes in — providing maximum compatibility, ease of use and seamless performance across all platforms.</p>
+      <p>You only need the Magix Keys Dongle if:</p>
+      <ul>
+        <li>Your Android phone/tablet doesn’t support Bluetooth Human Interface Device (HID) mode</li>
+        <li>Your target device has no Bluetooth interface (e.g., some TVs and embedded devices)</li>
+        <li>You want convenient plug-and-play support, with no Bluetooth pairing setup</li>
+      </ul>
+    </section>
+
+    <section id="dongle">
+      <h1>What is the Magix Keys Dongle?</h1>
+      <p>The Magix Keys dongle is a very handy USB device, roughly the size of a coin, that fits in any pocket and acts as a wireless receiver for the Magix Keys App. It enables your smartphone or tablet to send keyboard and mouse commands to nearly any device — even if that device doesn’t provide a Bluetooth interface or your smartphone / tablet doesn't support the Bluetooth HID mode.</p>
+      <p>It's based on the widely available M5Stack Atom S3 Lite development board — a compact and powerful ESP32-S3-based microcontroller with built-in USB that can either be flashed by yourself (DIY) or be obtained pre-flashed.</p>
+      <div class="center"><img src="dongle.png" alt="Magix Keys Dongle" style="width:50%;max-width:300px;" /></div>
+      <p>With the Magix Keys Dongle, you get:</p>
+      <ul>
+        <li>Maximum compatibility with any USB-enabled device</li>
+        <li>Instant, reliable pairing — no manual configuration required</li>
+        <li>Full isolation from OS Bluetooth limitations</li>
+        <li>Plug-and-play performance — just connect and go!</li>
+      </ul>
+      <h2>DIY Option</h2>
+      <p>Get your own M5Stack AtomS3 Lite DevKit and flash the firmware yourself. With our step-by-step guide this is quick and easy. Perfect for makers, tinkerers, or anyone who wants to save money and program the dongle themselves.</p>
+      <h2>Pre-Flashed Option</h2>
+      <p>Prefer true plug-and-play experience? Order a pre-flashed Magix Keys Dongle directly from us and start using it immediately.</p>
+      <div class="spacer"></div>
+      <p>No matter which path you choose, the Magix Keys Dongle unlocks a powerful new way to interact with your PC and boost your productivity.</p>
+    </section>
+
+    <section id="get">
+      <h1>Obtain Dongle</h1>
+      <p>Turn any smartphone and tablet into a smart keyboard assistant and unlock the future of effortless device control by obtaining a Magix Keys Dongle!</p>
+      <div class="box center">
+        <h3>Best Deal</h3>
+        <p>Support our Kickstarter campaign and grab the dongle at a special discounted price – available for a limited time!</p>
+        <a class="button" href="https://www.kickstarter.com/projects/magix-keys/magix-keys-app" target="_blank">Visit Kickstarter Campaign</a>
+      </div>
+      <div class="box center">
+        <h3>DIY Option via our Shop</h3>
+        <p>Starting September 2025</p>
+        <!--<a class="button deactivated" href="">Obtain Firmware</a>-->
+      </div>
+      <div class="box center">
+        <h3>Pre-Flashed Option via our Shop</h3>
+        <p>Starting September 2025</p>
+        <!--<a class="button deactivated" href="">Obtain Dongle</a>-->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navItems');
+      nav.classList.toggle('show');
+    }
+
+    function switchLanguage(select) {
+      const lang = select.value;
+      const path = window.location.pathname;
+      const newPath = path.replace(/_[a-z]{2}\.html$/, `_${lang}.html`);
+      window.location.href = newPath;
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const nav = document.getElementById('navItems');
+        nav.classList.remove('show')
+        const header = document.querySelector('header');
+        const offset = header ? header.offsetHeight : 0;
+        const target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop - offset,
+          behavior: 'smooth'
+        });        
+      });
+    });
+  </script>
+</body>
+</html>
