@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Magix Keys App turns your smartphone and tablet into a wireless Bluetooth keyboard / touchpad, OCR scanner, dictaphone, macro keypad and mouse jiggler.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="logo.png" />
+  <link rel="preload" as="image" href="lang_de.png" />
+  <link rel="preload" as="image" href="lang_en.png" />
+  <link rel="preload" as="image" href="index_hero_image.jpg" />
+  
+  <title>Magix Keys</title>
+  <noscript>
+    <style>
+      .js-only { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-header">
+        <a href="#top">
+          <img class="logo" src="logo.png" alt="Magix Keys Logo" />
+        </a>
+        <div class="menu js-only" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="nav-items js-only" id="navItems">
+        <a href="#scan">Scan</a>
+        <a href="#dictate">Dictate</a>
+        <a href="#automate">Automate</a>
+        <a href="#connection">Connection Options</a>
+        <a class="" href="index_de.html"><div class="lang de"/></div></a>
+        <a class="selected" href="index.html"><div class="lang en"/></div></a>
+      </div>
+    </nav>
+  </header>
+  <div id="top" class="hero img-index">
+    <div class="hero-container">
+      <div class="hero-box">
+        <h1 style="padding: 0">Makes Your Smartphone<br/>an Intelligent Keyboard<br/>with Eyes and Ears</h1>
+        <div class="buttons">
+          <a href="#intro">Tell me more</a>
+          <a class="outline" href="https://youtu.be/_-Pf0Z1TWpg" target="_blank"><img src="yt.png" style="height: max(calc(0.72vw + 1.2vh), 12px)"/> Video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="after-hero">
+    <div>
+    <section id="intro">
+      <div class="section-content">
+        <p>What if your smartphone or tablet could whisper directly into your computer keyboard… without touching a single key?</p>
+        <p>Meet Magix Keys – an app that will revolutionize the way you interact with your PC and other electronic devices controlled by a keyboard and mouse.</p>
+        <center><a href="https://play.google.com/store/apps/details?id=net.bitmagix.magix_keys.free.v1" target="_blank"><img src="playstore.png"/ style="height: 50px"></a></center>
+        <p>Magix Keys replaces a whole range of devices you may already be using and combines their functions into a single app:</p>
+        <ul>
+          <li>Document scanner with text recognition</li>
+          <li>Dictaphone with AI speech recognition</li>
+          <li>an unlimited number of macro keyboards</li>
+          <li>QR Code and Barcode Scanner</li>
+          <li>Bluetooth-Touchpad</li>
+          <li>Mouse Jiggler</li>
+        </ul>
+      </div>
+    </section>
+    <section id="scan" class="shaded_header">
+      <div class="section-content">
+        <h2>Scan Data via your Smartphone's Camera</h2>
+        <p>Use your smartphone or tablet's camera to scan documents — whether they're receipts, barcodes, tracking numbers, forms, or even handwritten notes — and extract the text you need. The text will then be automatically "typed" for you on the connected device.</p>
+      </div>
+    </section>
+    <section id="document_scanner">
+      <div class="section-content">
+        <h3>Scan Documents in No Time</h3>
+        <p>Do you want to quote passages from a book, digitize a magazine article, or import data from a spreadsheet? It has never been easier than with the Magix Keys App.</p>
+        <p>Just point your smartphone camera at the document to capture it. The built-in OCR feature extracts the text and lets you easily select the relevant parts. Then, with a single click, transfer this text to your word processor, email, or spreadsheet. The text will appear there, just as if you had typed it by hand.</p>
+        <div class="image-container">
+          <div class="no-bottom-margin">
+            <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+            <img src="document_scanner.gif" loading="lazy" width="640" height="360"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="quick_scan" class="shaded">
+      <div class="section-content">
+        <h3>Capture Text Fragments in a Flash</h3>
+        <p>Often, you don't want to capture an entire page of text, but rather just individual text fragments. With the quick scan feature, you can extract specific parts from the live camera image. Whether product names, numbers, or amounts—you decide what's relevant.</p>
+        <p>You can then let the Magix Keys App easily transfer the captured text excerpt to your PC.</p>
+        <div class="image-container">
+          <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+          <img src="quick_scan.gif" loading="lazy" width="640" height="360"/>
+        </div>
+        <p>Whether you are a student, teacher or journalist – it has never been so easy to quote texts from printed materials or, for example, enter a tracking number from a receipt.</p>
+      </div>
+    </section>
+    <section id="barcode_scanner">
+      <div class="section-content">
+        <h3>Easily Scan Data from Barcodes and QR Codes</h3>
+        <p>And instead of using an expensive barcode scanner to enter item numbers into inventory software, you can simply use your smartphone.</p>
+        <div class="image-container">
+          <div class="no-bottom-margin">
+            <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+            <img src="barcode_scanner.gif" loading="lazy" width="640" height="360"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dictate" class="shaded_header">
+      <div class="section-content">
+        <h2>Don't Type - Just Speak</h2>
+        <p>With the Magix Keys app, you can use your mobile device's voice recognition features with any PC program. Simply speak into your smartphone or tablet, and let Magix Keys do the typing for you.</p>
+      </div>
+    </section>
+    <section id="dictataphone">
+      <div class="section-content">
+        <h2>Live Dictaphone</h2>
+        <p>Dictate any text into your smartphone or tablet and watch it magically appear on your computer screen. The Magix Keys App transforms your phone into an intelligent dictation device with live speech-to-text conversion and intelligent undo features.</p>
+        <div class="image-container">
+          <div class="no-bottom-margin">
+            <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+            <img src="dictaphone.gif" loading="lazy" width="640" height="360"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="automate" class="shaded_header">
+      <div class="section-content">
+        <h2>Simplify and Automate Workflows</h2>
+        <p>Increase your productivity by letting the Magix Keys app take over routine tasks and simplify your workflows.</p>
+      </div>
+    </section>
+    <section id="macros">
+      <div class="section-content">
+        <h2>Automation and Remote Control via Macro Pads</h2>
+        <p>Do you want to automate routine tasks or remotely control any device? With the Magix Keys App, you can freely define keyboard inputs as macros and organize them clearly in any number of workspaces. You can quickly switch between them at any time, depending on the PC program or device you're currently using.</p>
+        <div class="image-container">
+          <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+          <img src="macro_pad.gif" loading="lazy" width="640" height="360"/>
+        </div>
+        <p>Whether you need keyboard shortcuts for games and PC applications, control your home theater system, or remotely operate a Raspberry Pi, instead of multiple hardware macro pads, all you need now is the Magix Keys App!</p>
+      </div>
+    </section>
+    <section id="macros" class="shaded">
+      <div class="section-content">
+        <h2>Magix Keys – The Perfect Companion for your Password Manager</h2>
+        <p>Do you use a password manager or regularly have to enter one-time passwords generated on your smartphone on your PC? Magix Keys now takes care of it for you, regardless of which password manager or password generator you use: With a single keystroke, you can transfer text from your smartphone clipboard to your PC.</p>
+        <div class="image-container">
+          <div class="no-bottom-margin">
+            <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+            <img src="transfer.gif" loading="lazy" width="640" height="360"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="jiggler">
+      <div class="section-content">
+        <h2>Stay Awake – Smart Mouse Movement to Keep You Online</h2>
+        <p>We’ve all been there: You step away for a few minutes, and your PC goes to sleep. Or worse, your status in MS Teams, Slack, or Zoom turns to "Away" even though you're still actively working - just not at the keyboard.</p>
+        <div class="image-container">
+          <img class="loader" src="loading.gif" alt="Animated Illustration"/>
+          <img src="mouse_mover.gif" loading="lazy" width="640" height="360"/>
+        </div>
+        <p>Magix Keys solves this with its built-in configurable mouse mover feature. It sends subtle, periodic movement signals - just enough to keep your device awake and your status "Online".</p>
+      </div>
+    </section>
+    <section id="connection" class="shaded_header">
+      <div class="section-content">
+        <h1>Connection Options - Two Powerful Ways to Connect</h1>
+        <p>The Magix Keys App offers two ways to control your computer or device: via a direct Bluetooth connection and the Magix Keys Dongle.</p>
+      </div>
+    </section>
+    <section id="jiggler">
+      <div class="section-content">
+        <p>The direct Bluetooth mode is very convenient, but may not work reliably on all systems or platforms. That’s where the Magix Keys Dongle comes in — providing maximum compatibility, ease of use and seamless performance across all platforms.</p>
+        <p>You only need the Magix Keys Dongle if:</p>
+        <ul>
+          <li>Your Android phone/tablet doesn’t support Bluetooth Human Interface Device (HID) mode</li>
+          <li>Your target device has no Bluetooth interface (e.g., some TVs and embedded devices)</li>
+          <li>You want convenient plug-and-play support, with no Bluetooth pairing setup</li>
+        </ul>
+      </div>
+    </section>
+    <section id="dongle" class="shaded">
+      <div class="section-content">
+        <h2>What is the Magix Keys Dongle?</h2>
+        <p>The Magix Keys dongle is a very handy USB device, roughly the size of a coin, that fits in any pocket and acts as a wireless receiver for the Magix Keys App. It enables your smartphone or tablet to send keyboard and mouse commands to nearly any device — even if that device doesn’t provide a Bluetooth interface or your smartphone / tablet doesn't support the Bluetooth HID mode.</p>
+        <p>It's based on the widely available M5Stack Atom S3 Lite development board — a compact and powerful ESP32-S3-based microcontroller with a USB-C interface that can either be flashed by yourself (DIY) or be obtained pre-flashed.</p>
+      </div>
+    </section>
+    <section id="dongle-sub1">
+      <div class="section-content">
+        <div class="center"><img src="dongle.png" alt="Magix Keys Dongle" style="width:50%;max-width:300px;" /></div>
+        <p>With the Magix Keys Dongle, you get:</p>
+        <ul>
+          <li>Maximum compatibility with any USB-enabled device</li>
+          <li>Instant, reliable pairing — no manual configuration required</li>
+          <li>Full isolation from OS Bluetooth limitations</li>
+          <li>Plug-and-play performance — just connect and go!</li>
+        </ul>
+      </div>
+    </section>
+    <section id="dongle-diy" class="shaded">
+      <div class="section-content">
+        <h2>DIY Option</h2>
+        <p>Get your own M5Stack AtomS3 Lite DevKit and flash the firmware yourself. With our step-by-step guide this is quick and easy. Perfect for makers, tinkerers, or anyone who wants to save money and program the dongle themselves.</p>
+        <div class="box center">
+          <h4>Best Deal</h4>
+          <p>Support our Kickstarter campaign and grab the DIY dongle license at a special discounted price – available for a limited time!</p>
+          <a class="button" href="https://www.kickstarter.com/projects/magix-keys/magix-keys-app" target="_blank">Visit Kickstarter Campaign</a>
+        </div>
+        <div class="box center">
+          <h4>DIY Dongle License via our Shop</h4>
+          <p>Starting September 2025</p>
+          <!--<a class="button deactivated" href="">Obtain License</a>-->
+        </div>
+      </div>
+    </section>
+    <section id="dongle-pf">
+      <div class="section-content">
+        <h2>Obtain Pre-Flashed Dongle</h2>
+        <p>Prefer true plug-and-play experience? Order a pre-flashed Magix Keys Dongle directly from us and start using it immediately.</p>
+        <div class="box center">
+          <h4>Best Deal</h4>
+          <p>Support our Kickstarter campaign and grab the dongle at a special discounted price – available for a limited time!</p>
+          <a class="button" href="https://www.kickstarter.com/projects/magix-keys/magix-keys-app" target="_blank">Visit Kickstarter Campaign</a>
+        </div>
+        <div class="box center">
+          <h4>Pre-Flashed Option via our Shop</h4>
+          <p>Starting September 2025</p>
+          <!--<a class="button deactivated" href="">{{SECTION_GET_SHOP_FP_GET}}</a>-->
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

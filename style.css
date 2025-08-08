@@ -1,0 +1,298 @@
+html, body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #001665;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 60px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 10px;
+  gap: 1rem;
+}    
+
+nav .logo {
+  height: 40px;
+  padding-top: 12px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav .lang {
+  height: 25px;
+  width: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+nav .de {
+  background-image: url('lang_de.png');
+}
+
+nav .en {
+  background-image: url('lang_en.png');
+}
+
+nav .nav-items .selected {
+  display: none;
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding-top: 28px;
+}
+
+.menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+@media (max-width: 940px) {
+  nav {
+    flex-direction: column;
+    justify-content: stretch;
+    width: calc(100vw - 60px);
+  }
+
+  .nav-items {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.5rem 0;
+  }
+
+  .nav-items.show {
+    display: flex;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0;
+  }
+
+  nav select {
+    margin-left: 0;
+  }
+  
+  .nav-header {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.hero {
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  min-width: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-index {
+  background-image: url('index_hero_image.jpg');
+}
+
+.hero-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(calc(10vh - 50px), 10px);
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: min(calc(1.5vw + 2vh), 30px);
+  color: #001665;
+}
+
+.hero-box h1 {
+  font-size: max(min(calc(1vw + 1.8vh), 30px), 12px);
+  margin: 0;
+}
+
+.hero-box .buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: min(calc(0.8vw + 1.2vh), 20px);
+  margin-top: 20px;
+}
+
+.hero-box a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #001665;
+  color: #fff;
+  text-decoration: none;  
+  border-radius: 100px;
+  padding: 10px min(calc(0.8vw + 1.2vh), 20px);
+  font-size: max(calc(0.6vw + 1.0vh), 10px);
+}
+
+.hero-box a:hover {
+  background-color: #000645;
+}
+
+.hero-box a.outline {
+  background-color: #fff;
+  border: 1px solid #001665;
+  color: #001665;
+}
+
+.hero-box a.outline:hover {
+  background-color: #ddd;
+}
+
+main {
+  padding: 60px 0px;
+  margin: 0 auto;
+}
+
+main.after-hero {
+  padding: 0px;
+}
+
+
+section {
+  padding: 40px 20px 40px;
+}
+
+.shaded_header {
+  background-color: #ddd;
+}
+
+.shaded {
+  background-color: #eee;
+}
+
+section .section-content {
+  min-width: 300px;
+  max-width: 600px;
+  margin:auto;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding-bottom: 0.2rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  padding-bottom: 0.2rem;
+}
+
+h4 {
+  font-size: 1.0rem;
+  padding-bottom: 0.2rem;
+}
+
+div.spacer {
+  padding-top: 2.5rem;
+}
+
+section li {
+  padding: 0.5rem 0rem;
+}
+
+.center {
+  text-align: center;
+}
+
+div.box {
+  background: #dee1ff;
+  border: 1px solid #001665;
+  border-radius: 10px;
+  padding: 2em 20px;
+  margin: 2em auto;
+  max-width: 300px;
+}
+
+.box h3 {
+  padding-top: 0px;
+}
+
+a.button {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.8em 1.4em;
+  background: #001665;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.image-container {
+  display: inline-block;
+  justify-content: center;
+  margin: 20px -20px;
+  position: relative;
+  width: calc(100% + 40px);
+  max-width: 640px;
+  min-width: 300px;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;  
+  z-index: 1;
+}
+
+.image-container img.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.image-container .no-bottom-margin {
+  margin-bottom: -64px;
+}
