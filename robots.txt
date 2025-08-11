@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://magixkeys.github.io/sitemap.xml
