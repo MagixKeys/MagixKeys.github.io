@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Magix Keys Dongle - DIY Web-Flasher</title>
+    <style>
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem; /* 16px */
+            padding: 2rem; /* 32px */
+            display: flex;
+            flex-direction: column;
+        }
+        .close {
+            width: 100%;
+            text-align: right;
+        }
+        .close a {
+            text-decoration: none;
+            color: #777777;
+        }
+        .status-output p {
+            text-align: center;
+            color: #4b5563;
+        }
+        .ui-buttons {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* 16px */
+            align-items: center;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .ui-buttons {
+                flex-direction: row;
+                gap: 1rem;
+            }
+        }
+        .btn {
+          border-radius: 100px;
+          border: 0;
+          width: 100%;
+          max-width: 300px;
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+        .btn-primary {
+          background-color: #001665;
+          color: #fff;
+        }
+        .btn-primary:hover {
+          background-color: #000645;
+        }
+        .btn-secondary {
+          background-color: #fff;
+          border: 1px solid #001665;
+          color: #001665;
+        }
+        .btn-secondary:hover {
+          background-color: #ddd;
+        }
+        .prompt {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .progress-bar-container {
+            margin-top: 1rem;
+        }
+        .progress-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        .progress-bar-labels span {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 9999px;
+            overflow: hidden;
+            background-color: #e5e7eb;
+        }
+        .progress-bar::-webkit-progress-value {
+            background-color: #4ade80; /* green-400 */
+            transition: width 0.3s ease-in-out;
+        }
+        .progress-bar::-moz-progress-bar {
+            background-color: #4ade80; /* green-400 */
+        }
+        .log-toggle {
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            color: #777777;
+			border-top: 1px solid;
+        }
+        .log-output {
+            background-color: #111827; /* gray-900 */
+            color: #86efac; /* green-400 */
+            padding: 1rem; /* 16px */
+            border-radius: 0.5rem; /* 8px */
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem; /* 14px */
+            overflow-y: auto;
+        }
+        .log-output p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-header">
+        <a href="index.html">
+          <img class="logo" src="logo.png" alt="Magix Keys Logo" />
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="connection">
+      <div class="section-content">
+      
+        <div class="container">
+            <div class="close">
+                <a href="/"><img src="close.png" width="12" height="12"/> Close</a>
+            </div>
+            <h1 class="center">Magix Keys Dongle - DIY Web-Flasher</h1>
+            <div class="prompt">
+              <div id="instructionsFirst">
+                <p>
+                    With this tool you can easily program or update an M5Stack Atom S3 Lite development kit to the latest firmware version directly from your browser, if you are using Chrome or Edge with JavaScript being turned on. If you have installed the esptool.py on your computer, you can alternatively use this tool. In this case you need to press the button "Use esptool.py" for further instructions.
+                </p>
+                <p>
+                    In order to prepare the M5Stack Atom S3 Lite kit for flashing, you must connect it via USB to your computer and switch it to bootloader mode by holding down the <b>button on the side</b> for a few seconds until it lights up green and then release the button.
+                </p>
+				<div class="center">
+					<img src="dongle_bootloader.png" alt="Dongle with marked button"/>
+				</div>
+                <p>
+                    After that, press the button "Connect" below and select the serial port of your M5Stack Atom S3 Lite development kit in the dialog that shows a list of currently connected serial devices. If you are unsure, which entry belongs to the M5Stack Atom S3 Lite, you can hold down the button on the side again while the selection dialog is open. The respective entry will then disappear and reappear, when you release the button as soon it lights up green again.
+                </p>
+                <div class="ui-buttons">
+                    <button id="connectButton" class="btn btn-primary">
+                        Connect
+                    </button>
+                    <button id="localEsptoolButton" class="btn btn-secondary">
+                        Use esptool.py
+                    </button>
+                </div>
+              </div>
+              <div id="instructionsLocalEsptool" style="display: none">
+                <p>
+                    If you have esptool.py locally installed on your computer, you can use this tool to program your M5Stack Atom S3 Lite dev kit with the Magix Keys Dongle Firmware by following these steps:
+                </p>
+				<ol>
+					<li>Download the files <a href="firmware/boot.bin">boot.bin</a> and <a href="firmware/MagixKeysDongle.bin">MagixKeysDongle.bin</a></li>
+					<li>Hold the button on the side of the dongle pressed until it lights up green in order to enter bootloader mode.</li>
+					<li>
+						Execute the following command (replace COM4 with the applicable port on your computer):<br/>
+					    <div class="log-output">
+							<p>python esptool.py -p COM4 write_flash 0x0 boot.bin 0x20000 MagixKeysDongle.bin</p>
+						</div>
+					</li>
+					<li>Start the firmware by either short-pressing the button on the side of the dongle or unplugging and replugging the dongle. After that, short-press the Magix Keys Dongle's main button. Now the main indicator light is supposed to flash three times in blue (if not connected to the app) or green (if connected)</li>
+					<li>If you flash the dongle for the first time, you need to install the Magix Keys Dongle License by establishing a connection from the Magix Keys App and following the instructions there.</li>
+				</ol>
+                <div class="ui-buttons">
+                    <button class="btn btn-primary backToStartButton">
+                        Back
+                    </button>
+                </div>
+              </div>
+              <div id="instructionsConnecting" style="display: none">
+                <p class="center">
+                    Trying to connect...
+                </p>
+                <p class="center">
+                    <img src="loading.gif" width="640" height="360"/>
+                </p>
+                <div class="ui-buttons">
+                    <button class="btn btn-primary backToStartButton">
+                        Cancel
+                    </button>
+                </div>
+              </div>
+              <div id="instructionsConnected" style="display: none">
+                <p class="center">
+                    You are now successfully connected. Press the button below to start flashing.
+                </p>
+                <div class="ui-buttons">
+                    <button id="flashButton" class="btn btn-primary">
+                        Flash
+                    </button>
+                    <button id="disconnectButton" class="btn btn-secondary">
+                        Disconnect
+                    </button>
+                </div>
+              </div>
+              <div id="instructionsConnectError" style="display: none">
+                <p>
+                    Establishing a connection to the selected device <b>failed</b>. Please unplug and replug your device. Then try again and make sure to select the correct device.
+                </p>
+                <div class="ui-buttons">
+                    <button class="btn btn-primary backToStartButton">
+                        OK
+                    </button>
+                </div>
+                </p>
+              </div>
+            </div>
+            <div id="flashProgressContainer" class="progress-bar-container" style="display: none">
+                <p class="center">
+                    The firmware is flashed on your device...
+                </p>
+                <div class="progress-bar-labels">
+                    <span id="fileProgressLabel">File Progress:</span>
+                    <span id="fileProgressPercent">0%</span>
+                </div>
+                <progress id="flashProgressBar" class="progress-bar" value="0" max="100"></progress>
+            </div>
+            <div id="flashingFailedContainer" style="display: none">
+                <p>
+                    Flahing the firmware failed. Please unplug and replug your device and try again. If the problem persists, try an other computer.
+                </p>
+                <div class="ui-buttons">
+                    <button class="btn btn-primary backToStartButton">
+                        OK
+                    </button>
+                </div>
+            </div>
+            <div id="flashingSuccessContainer" style="display: none">
+                <p>
+                    Successfully flashed the firmware. In order to verify whether the flashed firmware works correctly, press the button on the side of the dongle briefly in order to restart the dongle. After that, short-press the Magix Keys Dongle's main button. Now the main indicator light is supposed to flash three times in blue (if not connected to the app) or green (if connected).
+                </p>
+				<p>
+					If you flashed the dongle for the first time, you need to install the Magix Keys Dongle License by establishing a connection from the Magix Keys App and following the instructions there.				
+				</p>
+                <div class="ui-buttons">
+                    <button class="btn btn-primary backToStartButton">
+                        OK
+                    </button>
+                </div>
+            </div>
+            <div id="showLogButton" class="log-toggle">
+                Show Log
+            </div>
+            <div id="hideLogButton" class="log-toggle" style="display: none">
+                Hide Log
+            </div>
+            <!-- Log Output -->
+            <div id="logContainer" class="log-container" style="display: none">
+                <div id="logOutput" class="log-output" style="height: 16rem;"></div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <script type="module">
+        import { ESPLoader, Transport } from 'https://unpkg.com/esptool-js@latest/bundle.js';
+
+        // --- Global Variables and Constants ---
+        let device = null;
+        let transport;
+        let esploader;
+
+        const logOutput = document.getElementById('logOutput');
+        const logContainer = document.getElementById('logContainer');
+        const showLogButton = document.getElementById('showLogButton');
+        const hideLogButton = document.getElementById('hideLogButton');
+        const instructionsFirst = document.getElementById('instructionsFirst');
+        const instructionsLocalEsptool = document.getElementById('instructionsLocalEsptool');
+        const instructionsConnected = document.getElementById('instructionsConnected');
+        const instructionsConnecting = document.getElementById('instructionsConnecting');
+        const instructionsConnectError = document.getElementById('instructionsConnectError');
+        const flashProgressBar = document.getElementById('flashProgressBar');
+        const flashProgressContainer = document.getElementById('flashProgressContainer');
+        const fileProgressLabel = document.getElementById('fileProgressLabel');
+        const fileProgressPercent = document.getElementById('fileProgressPercent');
+        const flashingSuccessContainer = document.getElementById('flashingSuccessContainer');
+        const flashingFailedContainer = document.getElementById('flashingFailedContainer');
+
+        // --- Firmware Configuration (Hardcoded as per user request) ---
+        const firmwareFiles = [
+            { path: 'firmware/boot.bin', address: 0x0 },
+            { path: 'firmware/MagixKeysDongle.bin', address: 0x20000 },
+        ];
+
+        // --- Utility Functions ---
+        function appendLog(message, isError = false) {
+            const p = document.createElement('p');
+            p.textContent = message;
+            if (isError) {
+                p.classList.add('text-red-400');
+            }
+            logOutput.appendChild(p);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        const espLoaderTerminal = {
+            clean() {
+                logOutput.innerHTML = '';
+            },
+            writeLine(data) {
+                appendLog(data);
+            },
+            write(data) {
+                appendLog(data);
+            },
+        };
+
+        // --- Event Listeners ---
+        function addEventToAll(selector, event, handler) {
+          document.querySelectorAll(selector).forEach(el => {
+            el.addEventListener(event, handler);
+          });
+        }
+        addEventToAll('.backToStartButton', 'click', async () => {
+            device = null;
+            instructionsFirst.style.display = 'block';
+            instructionsLocalEsptool.style.display = 'none';
+            instructionsConnectError.style.display = 'none';
+            instructionsConnecting.style.display = 'none';
+            flashingFailedContainer.style.display = 'none';
+            flashingSuccessContainer.style.display = 'none';
+        });
+        showLogButton.addEventListener('click', async () => {
+            showLogButton.style.display = 'none';
+            hideLogButton.style.display = 'block';
+            logContainer.style.display = 'block';
+        });
+        hideLogButton.addEventListener('click', async () => {
+            espLoaderTerminal.clean();
+            showLogButton.style.display = 'block';
+            hideLogButton.style.display = 'none';
+            logContainer.style.display = 'none';
+        });
+        document.getElementById('connectButton').addEventListener('click', async () => {
+			let selectedDevice = null
+            try {
+                if (device === null) {
+                    selectedDevice = await navigator.serial.requestPort({});
+					device = selectedDevice;
+                    transport = new Transport(device, true);
+                }
+                const flashOptions = {
+                    transport,
+                    baudrate: 460800,
+                    terminal: espLoaderTerminal,
+                    debugLogging: false,
+                };
+                instructionsFirst.style.display = 'none';
+                instructionsConnecting.style.display = 'block';
+                esploader = new ESPLoader(flashOptions);
+                await esploader.main();
+                const chip = esploader.chip.CHIP_NAME;
+
+                appendLog(`Connected to device: ${chip}`);
+                if (chip === "ESP32-S3") {
+                    instructionsConnected.style.display = 'block';
+                } else {
+                    instructionsConnectError.style.display = 'block';
+                }
+            } catch (error) {
+                if (device === null || device != selectedDevice) {
+                    // user canceled selection or connect attempt: do nothing
+                } else {
+                    appendLog(`Connection failed: ${error.message}`, true);
+                    instructionsConnectError.style.display = 'block';
+                    console.error(error);
+                    device = null;
+                }
+            }
+            instructionsConnecting.style.display = 'none';
+        });
+        document.getElementById('localEsptoolButton').addEventListener('click', async () => {
+            instructionsFirst.style.display = 'none';
+            instructionsLocalEsptool.style.display = 'block';
+        });
+        document.getElementById('flashButton').addEventListener('click', async () => {
+            instructionsConnected.style.display = 'none';
+            flashProgressContainer.style.display = 'block';
+            try {
+                
+                // Download files
+                appendLog('Downloading firmware files...');
+                const filesToFlash = await Promise.all(firmwareFiles.map(async ({ path, address }) => {
+                    appendLog(`Downloading ${path}...`);
+                    const response = await fetch(path);
+                    if (!response.ok) {
+                        throw new Error(`Failed to download ${path}: ${response.statusText}`);
+                    }
+                    
+                    // Correctly reads the ArrayBuffer and converts to a binary string
+                    const buffer = await response.arrayBuffer();
+                    function bufferToBinaryString(buffer) {
+                        let binary = '';
+                        const bytes = new Uint8Array(buffer);
+                        const len = bytes.byteLength;
+                        const chunkSize = 16384; // Chunk size to prevent stack overflow
+                        for (let i = 0; i < len; i += chunkSize) {
+                            binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+                        }
+                        return binary;
+                    }
+                    const binaryString = bufferToBinaryString(buffer);
+
+                    return { data: binaryString, address };
+                }));
+
+                const flashOptions = {
+                    fileArray: filesToFlash,
+                    flashSize: "keep",
+                    eraseAll: false,
+                    compress: true,
+                    reportProgress: (fileIndex, written, total) => {
+                        const percent = Math.floor((written / total) * 100);
+                        flashProgressBar.value = percent;
+                        fileProgressPercent.textContent = `${percent}%`;
+                        fileProgressLabel.textContent = `File Progress (${fileIndex + 1}/${filesToFlash.length}):`;
+                    },
+                };
+                
+                await esploader.writeFlash(flashOptions);
+                appendLog('Flashing process completed successfully!');
+                flashingSuccessContainer.style.display = 'block';
+            } catch (error) {
+                appendLog(`Flashing failed: ${error.message}`, true);
+                console.error(error);
+                flashingFailedContainer.style.display = 'block';
+            } finally {
+                flashProgressContainer.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('disconnectButton').addEventListener('click', async () => {
+            if (transport) await transport.disconnect();
+            device = null;
+            transport = null;
+            esploader = null;
+            appendLog('Serial port disconnected.');
+            instructionsFirst.style.display = 'block';
+            instructionsConnected.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
